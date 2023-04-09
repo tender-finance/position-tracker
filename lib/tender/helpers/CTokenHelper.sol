@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: BSD-3-Clause
-pragma solidity ^0.8.10;
+pragma solidity >=0.8.0;
 import {IERC20, IWETH} from '../interfaces/Tokens.sol';
 import {ICToken} from '../interfaces/CToken.sol';
 import {Addresses} from 'tender/helpers/Addresses.sol';

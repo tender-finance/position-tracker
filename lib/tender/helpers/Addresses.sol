@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity >=0.8.0;
 import {IERC20} from 'lib/interface/Tokens.sol';
 import {ICToken} from 'lib/interface/CToken.sol';
 import {IComptroller} from 'lib/interface/Comptroller.sol';
