@@ -2,8 +2,9 @@
 pragma solidity >=0.8.0;
 
 import {IComptroller} from "./Comptroller.sol";
-import {InterestRateModel} from "./InterestRateModel.sol";
-import {IERC20} from "./Tokens.sol";
+import {InterestRateModel} from "./../helpers/InterestRateModel.sol";
+import {IERC20} from "oz/token/ERC20/ERC20.sol";
+
 import {
   IRewardRouterV2,
   IStakedGlp,
@@ -67,20 +68,6 @@ interface ICToken {
   function performanceFeeMAX() external view returns(uint256);
   function withdrawFeeMAX() external view returns(uint256);
   function autoCompoundBlockThreshold() external view returns(uint256);
-  event AccrueInterest(uint cashPrior, uint interestAccumulated, uint borrowIndex, uint totalBorrows);
-  event Mint(address minter, uint mintAmount, uint mintTokens);
-  event Redeem(address redeemer, uint redeemAmount, uint redeemTokens);
-  event Borrow(address borrower, uint borrowAmount, uint accountBorrows, uint totalBorrows);
-  event RepayBorrow(address payer, address borrower, uint repayAmount, uint accountBorrows, uint totalBorrows);
-  event LiquidateBorrow(address liquidator, address borrower, uint repayAmount, address cTokenCollateral, uint seizeTokens);
-  event NewPendingAdmin(address oldPendingAdmin, address newPendingAdmin);
-  event NewAdmin(address oldAdmin, address newAdmin);
-  event NewComptroller(IComptroller oldComptroller, IComptroller newComptroller);
-  event NewMarketInterestRateModel(InterestRateModel oldInterestRateModel, InterestRateModel newInterestRateModel);
-  event NewReserveFactor(uint oldReserveFactorMantissa, uint newReserveFactorMantissa);
-  event ReservesAdded(address benefactor, uint addAmount, uint newTotalReserves);
-  event ReservesReduced(address admin, uint reduceAmount, uint newTotalReserves);
-
   function transfer(address dst, uint amount) external returns (bool);
   function transferFrom(address src, address dst, uint amount) external returns (bool);
   function approve(address spender, uint amount) external returns (bool);
@@ -98,12 +85,4 @@ interface ICToken {
   function getCash() external view returns (uint);
   function accrueInterest() external returns (uint);
   function seize(address liquidator, address borrower, uint seizeTokens) external returns (uint);
-
-  /*** Admin Functions ***/
-  function _setPendingAdmin(address payable newPendingAdmin) external returns (uint);
-  function _acceptAdmin() external returns (uint);
-  function _setComptroller(IComptroller newComptroller) external returns (uint);
-  function _setReserveFactor(uint newReserveFactorMantissa) external returns (uint);
-  function _reduceReserves(uint reduceAmount) external returns (uint);
-  function _setInterestRateModel(InterestRateModel newInterestRateModel) external returns (uint);
 }

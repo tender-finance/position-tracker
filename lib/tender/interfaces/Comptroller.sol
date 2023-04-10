@@ -4,20 +4,23 @@ pragma solidity >=0.8.0;
 import {ITenderPriceOracle} from './TenderPriceOracle.sol';
 import {ICToken} from './CToken.sol';
 import {IERC20} from './Tokens.sol';
-
 interface IComptroller {
   function isComptroller () external view returns (bool);
   function oracle() external view returns (ITenderPriceOracle);
-  function markets(address) external view returns (
-    bool isListed,
-    uint collateralFactorMantissa,
-    uint liquidationThresholdMantissa,
-    uint collateralFactorMantissaVip,
-    uint liquidationThresholdMantissaVip,
-    bool isComped,
-    bool isPrivate,
-    bool onlyWhitelistedBorrow
-  );
+
+  struct Market {
+    bool isListed;
+    uint collateralFactorMantissa;
+    uint liquidationThresholdMantissa;
+    uint collateralFactorMantissaVip;
+    uint liquidationThresholdMantissaVip;
+    bool isComped;
+    bool isPrivate;
+    bool onlyWhitelistedBorrow;
+  }
+
+  function markets(address) external view returns (Market memory);
+
   function enterMarkets(address[] calldata cTokens) external returns (uint[] memory);
   function exitMarket(address cToken) external returns (uint);
   function addToMarketExternal(address cToken, address borrower) external;
