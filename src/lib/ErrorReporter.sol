@@ -1,6 +1,10 @@
 // SPDX-License-Identifier: BSD-3-Clause
 pragma solidity >=0.8.0;
 
+/* This file is necessary because for some reason it is a contract instead of a library in compound
+ * it is also necessary because it is helpful to actually be able to import the enums, which cannot be dont without inheritance or external contracts in the origianl
+ */
+
 enum Error {
   NO_ERROR,
   UNAUTHORIZED,

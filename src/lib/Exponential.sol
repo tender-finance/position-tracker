@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: BSD-3-Clause
 pragma solidity >=0.8.0;
 
+/* This file is necessary because for some reason it is a contract instead of a library in compound */
+
 /**
   * @title Exponential module for storing fixed-precision decimals
 * @author Compound

@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: BSD-3-Clause
 pragma solidity >=0.8.10;
+import {CTokenInterface, CTokenStorage} from 'tender/CToken/CTokenInterfaces.sol';
 import {IComptroller} from 'tender/interfaces/Comptroller.sol';
 import {ICToken} from 'tender/interfaces/CToken.sol';
-import {CTokenInterface, CTokenStorage} from 'src/CToken/CTokenInterfaces.sol';
-import {ERC721} from 'oz/token/ERC721/ERC721.sol';
 import {Exponential as Expo} from './Exponential.sol';
+import {ERC721} from 'oz/token/ERC721/ERC721.sol';
 import {SafeMath} from 'oz/utils/math/SafeMath.sol';
 import {Error} from './ErrorReporter.sol';
 
