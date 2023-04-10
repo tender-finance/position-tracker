@@ -10,20 +10,21 @@ pragma solidity >=0.8.0;
   *         Thus, if we wanted to store the 5.1, mantissa would store 5.1e18. That is:
   *         `Exp({mantissa: 5100000000000000000})`.
   */
+
+
+struct Exp {
+  uint mantissa;
+}
+
+struct Double {
+  uint mantissa;
+}
+
 library Exponential {
   uint constant expScale = 1e18;
   uint constant doubleScale = 1e36;
   uint constant halfExpScale = expScale/2;
   uint constant mantissaOne = expScale;
-
-  struct Exp {
-    uint mantissa;
-  }
-
-  struct Double {
-    uint mantissa;
-  }
-
   /**
     * @dev Truncates the given exp to a whole number value.
     *      For example, truncate(Exp{mantissa: 15 * expScale}) = 15
